@@ -1,21 +1,23 @@
 # frozen_string_literal: true
 
-require_relative 'custom_content'
+require 'observer'
+require_relative 'displayable'
 
 # class for chess board
 class Board
-  include ChessPieces
+  include Displayable
+  include Observable
 
-  attr_reader :grid
+  attr_reader :black_king, :white_king, :mode
+  attr_accessor :data, :active_piece, :previous_piece
 
-  def initialize
-    @grid = Array.new(8) { Array.new(8) }
+  def initialize(data = Array.new(8) { Array.new(8) }, params = {})
+    @data = data
+    @active_piece = params[:active_piece]
+    @previous_piece = params[:previous_piece]
+    @black_king = params[:black_king]
+    @white_king = params[:white_king]
+    @mode = params[:mode]
   end
 
-  def display_board
-    @grid.each do |row|
-      puts row.join(' ')
-    end
-    puts ('a'..'h').to_a.join(' ')
-  end
-end
+  
