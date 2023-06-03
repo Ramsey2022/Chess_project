@@ -8,7 +8,7 @@ class Pawn < Piece
 
   def initialize(board, args)
     super(board, args)
-    @symbol = " /u265F "
+    @symbol = " \u265F "
     @moved = false
     @en_passant = false
   end

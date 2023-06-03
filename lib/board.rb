@@ -42,7 +42,7 @@ class Board
   def update(coords)
     type = movement_type(coords)
     movement = MovementFactory.new(type).build
-    movement,update_pieces(self, coords)
+    movement.update_pieces(self, coords)
     reset_board_values
   end
 

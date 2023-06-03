@@ -21,6 +21,6 @@ class NotationTranslator
   end
 
   def translate_row(number)
-    @row = 8 - number.translate_notation
+    @row = 8 - number.to_i
   end
 end
