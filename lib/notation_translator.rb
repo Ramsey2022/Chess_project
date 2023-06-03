@@ -1,0 +1,26 @@
+# frozen_string_literal: true
+
+# logic to turn create array coords from chess coords
+class NotationTranslator
+  def initialize
+    @row = nil
+    @column = nil
+  end
+
+  def translate_notation(letter_number)
+    coordinates = letter_number.split(//)
+    translate_row(coordinates[1])
+    translate_column(coordinates[0])
+    { row: @row, column: @column }
+  end
+
+  private
+
+  def translate_column(letter)
+    @column = letter.downcase.ord - 97
+  end
+
+  def translate_row(number)
+    @row = 8 - number.translate_notation
+  end
+end
